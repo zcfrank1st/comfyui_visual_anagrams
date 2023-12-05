@@ -93,15 +93,15 @@ class VisualAnagramsSampleNode:
         im_views = torch.unsqueeze(im_views, 0)
         return (im_views, )
 
-class VisualAnagramsAnimateNode:
-    ...
+# class VisualAnagramsAnimateNode:
+#     ...
 
 NODE_CLASS_MAPPINGS = {
     "VisualAnagramsSample": VisualAnagramsSampleNode,
-    "VisualAnagramsAnimate": VisualAnagramsAnimateNode,
+    # "VisualAnagramsAnimate": VisualAnagramsAnimateNode,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
     "VisialAnagramsSample": "visual_anagrams_sample",
-    "VisualAnagramsAnimate": "visual_anagrams_animate",
+    # "VisualAnagramsAnimate": "visual_anagrams_animate",
 }
