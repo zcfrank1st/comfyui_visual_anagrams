@@ -86,9 +86,7 @@ class VisualAnagramsSampleNode:
                                 generator=generator)
         
         # 1 3 256 256 =>1 3 256 256 => 256, 256, 3
-        im_views = torch.stack([view.view(image[0]) for view in views])
-        im_views = im_views / 2. + 0.5
-        print(im_views.size())
+        im_views = image / 2. + 0.5
         im_views = torch.squeeze(im_views)
         print(im_views.size())
         im_views = im_views.permute(1,2,0)
