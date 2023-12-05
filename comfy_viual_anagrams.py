@@ -85,8 +85,11 @@ class VisualAnagramsSampleNode:
                                 noise_level=50,
                                 generator=generator)
 
-        print(image.size())
-        return ((image / 2. + 0.5)/ 255.0, )
+        image_np = image.cpu().numpy()  # Change from CxHxW to HxWxC for Pillow
+        im = Image.fromarray((image_np.squeeze(0) * 255).astype(np.uint8))
+        image_tensor_out = torch.tensor(np.array(im).astype(np.float32) / 255.0)  # Convert back to CxHxW
+        image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
+        return (image_tensor_out / 2. + 0.5, )
 
 class VisualAnagramsAnimateNode:
     ...
