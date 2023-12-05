@@ -12,7 +12,7 @@ Comfy Visual Anagrams
 
 ## EXAMPLE
 
-![workflow_example](./workflow.png)
+![workflow_example](./sample.png)
 
 ## TODO
 
