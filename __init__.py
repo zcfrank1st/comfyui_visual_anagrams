@@ -1,3 +1,3 @@
-from .comfy_viual_anagrams import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
+from .comfy_visual_anagrams import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
 
 __all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
