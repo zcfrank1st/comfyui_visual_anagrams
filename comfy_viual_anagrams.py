@@ -85,6 +85,7 @@ class VisualAnagramsSampleNode:
                                 noise_level=50,
                                 generator=generator)
 
+        print(image.size())
         return (image / 2. + 0.5, )
 
 class VisualAnagramsAnimateNode:
