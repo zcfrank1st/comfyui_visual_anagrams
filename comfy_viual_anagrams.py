@@ -86,7 +86,7 @@ class VisualAnagramsSampleNode:
                                 generator=generator)
 
         print(image.size())
-        return (image / 2. + 0.5, )
+        return ((image / 2. + 0.5)/ 255.0, )
 
 class VisualAnagramsAnimateNode:
     ...
