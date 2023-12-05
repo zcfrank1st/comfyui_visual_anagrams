@@ -90,6 +90,7 @@ class VisualAnagramsSampleNode:
         im_views = torch.squeeze(im_views)
         print(im_views.size())
         im_views = im_views.permute(1,2,0)
+        im_views = torch.unsqueeze(im_views, 0)
         return (im_views, )
 
 class VisualAnagramsAnimateNode:
