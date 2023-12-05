@@ -9,9 +9,9 @@ from pathlib import Path
 import torch
 from diffusers import DiffusionPipeline
 
-from visual_anagrams.views import get_views
-from visual_anagrams.samplers import sample_stage_1, sample_stage_2
-from visual_anagrams.utils import save_illusion
+from .visual_anagrams.views import get_views
+from .visual_anagrams.samplers import sample_stage_1, sample_stage_2
+from .visual_anagrams.utils import save_illusion
 
 class VisualAnagramsSampleNode:
     ana_views = ["flip", "rotate_cw", "rotate_180", "negate", "skew", "patch_permute", "pixel_permute", "jigsaw", "inner_circle",]
