@@ -85,11 +85,12 @@ class VisualAnagramsSampleNode:
                                 noise_level=50,
                                 generator=generator)
         
-        # 1 3 256 256 => 3 256 256 => 256, 256, 3
+        # 1 3 256 256 =>1 3 256 256 => 256, 256, 3
 
-        im_views = torch.stack([view.view(image[0]) for view in views]) / 2. + 0.5
-        image = im_views.squeeze(0).permute((1,2,0))
-        return (image, )
+        im_views = torch.stack([view.view(image[0]) for view in views])
+        im_views = im_views / 2. + 0.5
+        im_views = im_views.squeeze(0).permute(1,2,0)
+        return (im_views, )
 
 class VisualAnagramsAnimateNode:
     ...
