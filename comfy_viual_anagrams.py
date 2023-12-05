@@ -20,7 +20,6 @@ class VisualAnagramsSampleNode:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "name": ("STRING", {"default": "output_path"}),
                 "prompts": ("STRING",{"multiline": True, "default":"use | to split two prompts"}),
                 "view":  (cls.ana_views,),
                 "steps": ("INT", {"default": 30}),
@@ -29,16 +28,12 @@ class VisualAnagramsSampleNode:
             },
         }
 
-    RETURN_TYPES = ("IMAGE", "STRING")
-    RETURN_NAMES = ("image", "img_folder")
+    RETURN_TYPES = ("IMAGE", )
+    RETURN_NAMES = ("image", )
     FUNCTION = "ana_generate"
     CATEGORY = "visial_anagrams"
 
-    def ana_generate(self, name, prompts, view, steps, guidance_scale, seed):
-        # Do admin stuff
-        save_dir = os.path.join(folder_paths.output_directory, name)
-        save_dir.mkdir(exist_ok=True, parents=True)
-
+    def ana_generate(self, prompts, view, steps, guidance_scale, seed):
         # Make models
         stage_1 = DiffusionPipeline.from_pretrained(
                         "DeepFloyd/IF-I-M-v1.0",
@@ -67,8 +62,6 @@ class VisualAnagramsSampleNode:
 
 
         generator = torch.manual_seed(seed)
-        sample_dir = save_dir / '0000'
-        sample_dir.mkdir(exist_ok=True, parents=True)
 
         # Sample 64x64 image
         image = sample_stage_1(stage_1, 
@@ -79,7 +72,6 @@ class VisualAnagramsSampleNode:
                                 guidance_scale=guidance_scale,
                                 reduction='mean',
                                 generator=generator)
-        save_illusion(image, views, sample_dir)
 
         # Sample 256x256 image, by upsampling 64x64 image
         image = sample_stage_2(stage_2,
@@ -92,9 +84,8 @@ class VisualAnagramsSampleNode:
                                 reduction='mean',
                                 noise_level=50,
                                 generator=generator)
-        save_illusion(image, views, sample_dir)
 
-        return (image / 2. + 0.5, sample_dir)
+        return (image / 2. + 0.5, )
 
 class VisualAnagramsAnimateNode:
     ...
